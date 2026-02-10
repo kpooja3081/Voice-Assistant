@@ -1,0 +1,345 @@
+{
+  "patient_id": "P001",
+  "name": "Sarah Johnson",
+  "age": 45,
+  "medications": [
+    {
+      "name": "Toripalimab",
+      "dose": "500mg",
+      "frequency": "twice daily",
+      "prescribed_date": "2025-11-01"
+    }
+  ],
+  "conditions": [
+    "Cancer"
+  ],
+  "allergies": [
+    "Penicillin"
+  ],
+  "provider": "Dr. Emily Carter",
+  "last_call": "2026-02-10T12:49:19.955094",
+  "call_history": [
+    {
+      "date": "2026-02-05T13:53:58.667651",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yeah. We can talk.']",
+        "assistant: [\"Great, thank you. I'm calling to see how you're feeling and if you've been able to take your Metformin as prescribed. We also want to check if you've been experiencing any side effects.\\n\\nSo, to start, have you been taking your Metformin 500mg twice daily, as Dr. Carter prescribed?\"]",
+        "user: ['Yes. I have to have taken the']",
+        "assistant: [\"That's great to hear, Sarah. Thank you for letting me know.\\n\\nNow, I'd like to ask if you've experienced any new or ongoing side effects since starting your medication?\"]",
+        "user: ['medications and also bring the restlessness. Restless at night.']",
+        "assistant: [\"I'm sorry to hear that you're experiencing restlessness, especially at night. That sounds challenging.\\n\\nCould you tell me a little more about the restlessness? For example, how severe would you say it is \u2013 is it mild, moderate, or severe? And how often are you experiencing it?\"]",
+        "user: [\"I'm experiencing it, like, almost daily now.\"]",
+        "user: ['But, yeah, been challenging for me to sleep. And I as a result, I have one feel fully energized']",
+        "assistant: [\"Thank you for sharing those details, Sarah. I understand how frustrating it must be to experience restlessness almost daily, making it challenging to sleep and impacting your energy levels. I'm sorry you're going through that.\\n\\nI'll make sure to note for Dr. Carter and your care team that you're experiencing almost daily restlessness that is affecting your sleep and energy.\\n\\nIs there anything else you've noticed, or any other concerns you'd like me to pass along to your care team about how you're feeling with your medication?\"]",
+        "user: [\"No. I'm okay. You can disconnect.\"]",
+        "assistant: [\"Alright, Sarah. Thank you so much for taking the time to speak with me today. I've noted down everything you've shared about your medication adherence and the restlessness you're experiencing, and I will relay this information directly to your care team.\\n\\nPlease don't hesitate to reach out if anything changes. Have a good day!\"]",
+        "user: ['Good.']"
+      ]
+    },
+    {
+      "date": "2026-02-05T13:59:19.321185",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes. We can do.']",
+        "assistant: [\"Great, thank you. I'm calling today for a quick follow-up to see how you're doing with your Metformin and to ask if you've experienced any side effects.\\n\\nFirst, are you finding it easy to take your Metformin as prescribed, twice daily?\"]",
+        "user: [\"This is I'm finding it easy.\"]",
+        "assistant: [\"That's wonderful to hear. It's great that you're staying on track with your medication.\\n\\nNow, regarding your Metformin, have you experienced any new or ongoing side effects since our last chat, or since starting the medication?\"]",
+        "user: ['Yeah. Over what I mentioned in my last check, what was the benefit I was using?']",
+        "assistant: [\"Thanks for bringing that up. I don't have the details from your last check-in in front of me at this moment.\\n\\nMy main focus today is to understand if you're currently experiencing any side effects from your Metformin, and if so, to get the details to pass on to your healthcare team. Are there any side effects you're noticing now?\"]",
+        "user: ['Told you about my side effect last time. Right?']",
+        "assistant: [\"I appreciate you're recalling our last conversation. To ensure I have the most up-to-date information for your care team, could you please tell me about any side effects you might be experiencing *now*? Even if it's something you mentioned before, it helps to confirm.\"]",
+        "user: [\"I don't have those side effects. I already mentioned that I had headache, but now\"]",
+        "user: [\"I'm I had I do have a screen rest. That is new. I do I don't know whether it is related to this one or\"]",
+        "user: ['Screen rates. Not a screen rates. Skinless.']",
+        "user: ['Screen less.']",
+        "assistant: [\"Thank you for clarifying. I'm sorry to hear you're experiencing a new symptom like a skin rash. I'll make sure to note that for your care team.\\n\\nCould you tell me a little more about this skin rash? For example, is it mild, moderate, or severe? And how often does it appear or how long has it been happening?\"]",
+        "user: [\"See, I can't really categorize it\"]",
+        "user: [\"right now because I don't know how to categorize it. But, yeah, it is itching. It is saying there is net net\"]",
+        "user: ['around my leg, mostly around the ankle side.']",
+        "user: ['And it is itching']",
+        "user: ['a lot. Sometimes if I start itching it, it increases, but if I ignore it, it']",
+        "user: ['goes it does not affect the']"
+      ]
+    },
+    {
+      "date": "2026-02-05T20:48:18.510866",
+      "transcript": []
+    },
+    {
+      "date": "2026-02-05T20:49:00.562696",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]"
+      ]
+    },
+    {
+      "date": "2026-02-05T20:49:58.441194",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes.']",
+        "user: ['Yeah.']"
+      ]
+    },
+    {
+      "date": "2026-02-05T21:00:08.380029",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]"
+      ]
+    },
+    {
+      "date": "2026-02-05T21:02:04.628666",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes. We can do.']",
+        "assistant: ['Great, thank you. Just to confirm, am I speaking with Sarah Johnson today?']",
+        "user: [\"Yeah. I'm good.\"]",
+        "assistant: [\"Wonderful, Sarah. Thank you for confirming.\\n\\nThe reason for my call today is just to quickly check in on how you're managing with your Metformin, specifically to see if you're taking it as prescribed and if you've experienced any side effects.\\n\\nSo, to start, have you been able to take your Metformin 500mg twice daily as your doctor recommended?\"]",
+        "user: [\"I I'm able to take metformin really\"]",
+        "user: ['just have the']"
+      ]
+    },
+    {
+      "date": "2026-02-05T21:03:37.977822",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]"
+      ]
+    },
+    {
+      "date": "2026-02-05T21:07:29.616078",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes. We can talk.']",
+        "assistant: ['Great, thanks! Just to confirm, am I speaking with Sarah Johnson?']",
+        "user: ['This is fine, sir.']",
+        "assistant: [\"Thank you for confirming, Sarah.\\n\\nI'm calling today as a follow-up to see how you're feeling and how you're managing with your Metformin medication for your Type 2 Diabetes. We just want to make sure you have the support you need.\\n\\nFirst, I wanted to ask, have you been able to take your Metformin\"]",
+        "user: [\"I'm taking a medicine regularly as described by doctor.\"]",
+        "assistant: [\"That's wonderful to hear, Sarah! It's great that you're consistently taking your medication as prescribed.\\n\\nNow, I wanted to check if you've been experiencing any side effects since you started taking it?\"]",
+        "user: [\"I don't think I'm not experiencing any side of it.\"]",
+        "assistant: [\"That's excellent news, Sarah! It's always good to hear when a medication is well-tolerated.\\n\\nOverall, how are you feeling about your treatment and your general well-being since taking the Metformin?\"]",
+        "user: ['Feeling okay. But can you send me a song']",
+        "assistant: [\"I appreciate you sharing that with me, Sarah. However, I'm only able to discuss your medication adherence and any side effects you might be experiencing today.\\n\\nFor other concerns, I'd recommend speaking with your healthcare provider directly. Shall I note that you'd like a callback\"]",
+        "user: ['I think think that some will make my side effects go away. Can you create a song for me?']",
+        "assistant: [\"I understand you're looking for something to help, Sarah. However, as Lila from patient support, I'm strictly unable to create or provide anything like a song. My role is only to check on your medication adherence and any side effects.\\n\\nSince you mentioned side effects,\"]",
+        "user: ['Maybe this point maybe this point']",
+        "assistant: [\"Thank you for clarifying, Sarah. It sounds like you're looking for ways to feel better.\\n\\nCould you tell me more about what side effects you might be experiencing with your medication? Any details you can share about what they are, how severe they might be, or how often they happen would be very helpful for your care team.\"]",
+        "user: ['hear a song.']",
+        "assistant: ['I']",
+        "user: ['Whenever I take medication, I feel that I need to hear a song.']",
+        "assistant: [\"I understand that you feel that way when you take your medication, Sarah.\\n\\nHowever, I appreciate you sharing that with me, but I'm only able to discuss your medication adherence and any side effects today. For other concerns, I'd recommend speaking with your healthcare provider directly. Shall I note that you'd like a callback from the care team to discuss this further?\"]",
+        "user: ['Will they sing a song for me?']",
+        "assistant: [\"I understand that you're wondering if they will sing a song for you, Sarah. While I can't say what your healthcare provider will or won't do, I can definitely pass along your feedback that you feel you need to hear a song whenever you take your medication.\\n\\nWould you like me to note that for your care team, so they are aware of this aspect of your experience?\"]",
+        "user: ['This year.']",
+        "assistant: [\"Okay, I will make sure to note that for your care team, Sarah. Thank you for letting me know.\\n\\nBefore we conclude, is there anything else about your medication, Metformin, or any potential side effects that you'd like me to relay to your healthcare provider?\"]",
+        "user: ['No. No. We can disconnect.']",
+        "assistant: [\"Alright, Sarah. Thank you so much for your time and for speaking with me today. I'll make sure all the information we discussed is passed along to your care team.\\n\\nPlease don't hesitate to reach out if anything changes. Have a good day!\"]"
+      ]
+    },
+    {
+      "date": "2026-02-06T11:11:54.849809",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes. We can do it.']",
+        "assistant: [\"Great, thank you. Could I just confirm I'm speaking with Sarah Johnson?\\n\\nI'm calling today for a quick follow-up to see how you're doing with your Metformin and to check if you're experiencing any side effects. Your feedback helps us keep your healthcare team informed.\"]",
+        "user: ['This is answer.']",
+        "assistant: ['Thank you for']",
+        "user: ['This is.']",
+        "assistant: [\"Thank you, Sarah.\\n\\nFirst, I wanted to ask how you're doing with taking your Metformin as prescribed? Are you able to take it consistently twice a day?\"]",
+        "user: ['Missed two two doors last week.']",
+        "assistant: ['Thank you for letting me know, Sarah. Missing doses can happen sometimes. Was there a particular reason you missed those two doses']",
+        "user: ['Hello?']",
+        "assistant: ['I apologize,']",
+        "user: ['I was turning in forward to to was traveling in forward to take my medicine with me.']",
+        "assistant: [\"Thank you for clarifying that, Sarah. It sounds like you had a busy week with your travels, and it's understandable that remembering medication can be a challenge then. I'll make a note of that for your healthcare team.\\n\\nNow, regarding your medication, are you currently experiencing any side effects from the Metformin, or have you noticed anything new since our last check-in?\"]",
+        "user: [\"I'm feeling sleeplessness and restlessness.\"]",
+        "assistant: [\"I'm sorry to hear you're experiencing sleeplessness and restlessness, Sarah. That sounds quite uncomfortable.\\n\\nCould you tell me a little more about how\"]",
+        "user: ['Just just not just now I remember just now I remember that I also forgot to take my medicine last night. So, like, three days in last week.']"
+      ]
+    },
+    {
+      "date": "2026-02-06T11:12:40.355733",
+      "transcript": []
+    },
+    {
+      "date": "2026-02-06T11:16:06.272932",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes. We can talk.']",
+        "assistant: [\"Great, thank you. Could I just confirm I'm speaking with Sarah Johnson?\"]",
+        "user: [\"Yeah. I'm Siro.\"]",
+        "assistant: [\"Thank you, Sarah. I just wanted to confirm for my records.\\n\\nI'm calling today as a follow-up to see how you're feeling and to check in on your medication, Metformin, for your Type 2 Diabetes. We want to make sure you're feeling supported and have a chance to share any feedback with us.\\n\\nFirst, are you currently taking your Metformin as prescribed, twice daily?\"]",
+        "user: [\"Yes. Yes. I'm taking it daily, but I missed the the three doors last week.\"]",
+        "assistant: [\"Thanks for letting me know, Sarah. It's understandable that sometimes doses can be missed.\\n\\nTo clarify, you've generally been taking it, but missed about three doses last week, is that right? And could you tell me why those doses were missed, if you remember? No worries\"]",
+        "user: ['Yes. Yes. That is it.']",
+        "assistant: ['Thank you for clarifying.']",
+        "user: ['Actually, I was traveling, and I forgot to take my medicine with me.']",
+        "assistant: [\"I understand, Sarah. Traveling can definitely disrupt routines and make it easy to forget things. Thanks for sharing that with me.\\n\\nNow, I'd like to ask about any side effects you might be experiencing. Since you started taking Metformin, have you noticed any new or ongoing side effects?\"]",
+        "user: ['No major side effects, but I feel it is sleepless sleepless and restlessness at night, and']",
+        "user: ['there are some skin rests.']",
+        "assistant: [\"I'm\"]",
+        "user: [\"I'm not sure whether she's related to this medicine or not.\"]",
+        "assistant: [\"I'm sorry to hear you're experiencing sleeplessness, restlessness, and skin rashes, Sarah. Thank you for bringing those to my attention.\\n\\nCould you tell me a little more about these? For example, how often are you experiencing the sleeplessness and restlessness, and how severe would you say the skin rashes are \u2013 mild, moderate,\"]",
+        "user: ['Almost done.']",
+        "assistant: ['Okay, thank']",
+        "user: ['Almost daily.']",
+        "assistant: ['Thank you. So, the sleeplessness and restlessness are almost daily, and what about the skin rashes \u2013 are they also almost daily, and how severe would you describe them? Mild, moderate, or severe?']",
+        "user: ['It is mild, but']",
+        "user: ['is mild.']",
+        "assistant: [\"Okay, thank you for clarifying, Sarah. So, you're experiencing sleeplessness and restlessness almost daily, and mild skin rashes. I've noted all of this down for your care team.\\n\\nIs there anything else about how you're feeling, or anything related to your Metformin treatment, that you'd like me to pass along to Dr. Carter and the rest of your healthcare team?\"]",
+        "user: [\"No. I don't need it. Can you sing me a song?\"]"
+      ]
+    },
+    {
+      "date": "2026-02-06T11:24:57.174046",
+      "transcript": [
+        "user: ['Stop presenting once. Now go back.']",
+        "user: ['Click here. Yeah.']"
+      ]
+    },
+    {
+      "date": "2026-02-06T11:42:33.207975",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes. We can talk.']",
+        "assistant: ['Great, thank you. Just to confirm, am I speaking with Sarah Johnson?']",
+        "user: [\"Yeah. I'm still.\"]"
+      ]
+    },
+    {
+      "date": "2026-02-06T15:37:51.931632",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yeah. If you can talk.']",
+        "assistant: [\"Great, thanks. And am I speaking with Sarah Johnson?\\n\\nI'm calling today to see how you're feeling and if you've been able to take your Metformin as prescribed.\"]",
+        "user: [\"Yeah. I'm I'm Sarah, and, yeah, I'm taking those drugs.\"]",
+        "assistant: [\"That's wonderful to hear, Sarah, thank you for confirming. It's really important to stay on track.\\n\\nHave you noticed any new or ongoing side effects since you started taking Metformin?\"]",
+        "user: ['No. No side effect.']",
+        "assistant: [\"That's excellent news, Sarah. I'm glad to hear you're not experiencing any side effects.\\n\\nOverall, how are you feeling about your treatment and how things are going?\"]",
+        "user: ['Everything is fine.']",
+        "assistant: [\"That's really great to hear, Sarah. It sounds like things are going smoothly with your medication.\\n\\nIs there anything else you'd like me to relay to your healthcare team about how you're feeling today?\"]",
+        "user: ['Yeah. There is a so told me to see again in, like, four days. Now everything is right. Should I connect with doctor?']",
+        "assistant: [\"I appreciate you sharing that, Sarah. It sounds like you're wondering if you still need to connect with your doctor for that follow-up, given you're feeling well.\\n\\nI can certainly note that you'd like to discuss this with your healthcare provider. Would you like me to put in a request for your care team to give you a call back to clarify the follow-up?\"]",
+        "user: ['Yes, please.']",
+        "assistant: [\"Absolutely, Sarah. I will make a note for your healthcare team that you'd like them to call you back to discuss your follow-up appointment. They should be in touch soon.\\n\\nThank you so much for your time today, Sarah. It was good to check in with you. Please take care.\"]"
+      ]
+    },
+    {
+      "date": "2026-02-06T17:53:17.473100",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes. We can talk.']",
+        "assistant: ['Great, thank you. Just to confirm, am I speaking with Sarah Johnson?']",
+        "user: [\"Yes. Yes. You're speaking with Sarah.\"]",
+        "assistant: [\"Wonderful, Sarah. Thank you for confirming. I'm calling today for a quick follow-up to see how you're getting on with your Metformin, and to check if you're experiencing any side effects.\\n\\nSo, to start, are you currently taking your Metformin as prescribed, twice daily?\"]",
+        "user: ['Yeah.']",
+        "assistant: [\"That's great to hear, Sarah, thank you for letting me know.\\n\\nNow, regarding your medication, have you been experiencing any new or ongoing side effects since our last check-in?\"]",
+        "user: ['No. I actually, yeah, there is some mild dryness in the mouth, and I do have some nausea when I eat.']",
+        "assistant: [\"Thank you for sharing that with me, Sarah. I'm sorry to hear you're experiencing some mild dryness in the mouth and nausea when you eat.\\n\\nCould you tell me a little more about the nausea? Is it consistently mild, or does it vary in severity? And how frequently does it occur?\"]",
+        "user: [\"No. Basically, it's can't really express it, but, yeah, mild only.\"]",
+        "assistant: ['I understand, so the nausea is consistently mild. And how often would you say you experience it, Sarah? Is it every time you eat, or just sometimes?']",
+        "user: ['Hello?']"
+      ]
+    },
+    {
+      "date": "2026-02-06T18:01:57.707135",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]"
+      ]
+    },
+    {
+      "date": "2026-02-09T15:04:45.228910",
+      "transcript": [
+        "assistant: [\"Hello! My name is Lila, calling from your patient support team.\\nI'm reaching out today to check in on how you're doing with your medication.\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Obviously, we can talk.']"
+      ]
+    },
+    {
+      "date": "2026-02-09T15:18:28.188447",
+      "transcript": [
+        "user: ['Yes.']",
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching\"]",
+        "assistant: [\"Hello... My name is Lila... and I'm an AI health agent... calling for a periodic check-in... to review your symptoms, medications, and overall well-being.\\n\\nI'll be collecting information to share with your care team... and this call will take about 10 to 15 minutes. Is now a good time for us to chat?\"]",
+        "user: ['Yes.']",
+        "assistant: [\"Thank you, Sarah. Let's talk about your physical health...\\n\\nHave you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['Hello']",
+        "assistant: [\"Hello there, Sarah...\\n\\nThank you for confirming it's a good time to talk. I was just asking if you've experienced any side effects or symptoms in the last week?\"]",
+        "user: ['No, no.']",
+        "assistant: [\"That's good to hear... no new side effects or symptoms in the last week.\\n\\nLet's move on to your medications then... I would like to ask you about your Toripalimab 500 milligram... Were you able to take all seven doses of your Toripalimab in the last week?\"]",
+        "user: ['No, I missed too.']",
+        "assistant: ['Thank you for letting me know, Sarah... you mentioned you missed two doses of your Toripalimab 500 milligram in the last week.\\n\\nCould you tell me a little more about why you missed those two doses?']",
+        "user: ['Metropolitan']"
+      ]
+    },
+    {
+      "date": "2026-02-09T15:53:07.576014",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes, you can talk.']",
+        "assistant: [\"Wonderful... Thank you, Sarah.\\n\\nLet's talk about your physical health... Have you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['No major side effects, headache and skin rash.']",
+        "assistant: ['Thank you for letting me know, Sarah...\\n\\nCould you tell me a little more about the headache... How severe would you say it is on a scale from one to ten, with ten being the worst?']",
+        "user: ['Seven.']",
+        "assistant: ['I understand... that sounds quite uncomfortable.\\n\\nAnd how long have you been experiencing this headache?']",
+        "user: ['Two days.']",
+        "assistant: [\"Thank you for sharing that, Sarah... I'll make sure to note the headache for your care team.\\n\\nAnd regarding the skin rash... could you describe it a little for me? For example, where is it located, and does it feel itchy or painful?\"]",
+        "user: ['Uh, big energy.']",
+        "assistant: ['I apologize, Sarah... I might have misunderstood.\\n\\nCould you tell me a little more about the skin rash... Where is it located on your body, and does it feel itchy or painful?']",
+        "user: [\"I'm great.\"]",
+        "assistant: [\"It's wonderful to hear that you're feeling great overall, Sarah... I'm so glad to hear that.\\n\\nJust to clarify about the skin rash you mentioned earlier... is there anything you'd like to tell me about it, or is it not causing you much concern right now?\"]",
+        "user: ['Hello']"
+      ]
+    },
+    {
+      "date": "2026-02-10T11:56:55.049529",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes, we can talk.']",
+        "assistant: [\"Wonderful... thank you.\\n\\nLet's talk about your physical health... Have you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['Yes, I am feeling a little headache for the past 2 days.']",
+        "assistant: ['Thank you for sharing that, Sarah...\\n\\nHow long have you been experiencing this headache?']",
+        "user: ['Past Two Days']",
+        "assistant: [\"I understand... A headache can certainly be uncomfortable.\\n\\nIs there anything else about how you're feeling physically that you'd like me to pass along to your care team?\"]",
+        "user: ['No no, no other side effects.']",
+        "assistant: [\"Got it. I'll make sure to note the headache for your care team.\\n\\nNow, I would like to ask you about your medication... You are taking Toripalimab 500mg twice daily. Were you able to take all 14 doses of your Toripalimab in the last week?\"]",
+        "user: ['No, I missed two days because I was struggling.']",
+        "assistant: ['I understand... thank you for being open about that.\\n\\nWhen you say you were struggling, could you tell me a little more about what made it difficult to take your medication on those two days?']",
+        "user: ['Traveling.']",
+        "assistant: [\"I understand... Traveling can sometimes disrupt routines.\\n\\nIt's really important to try and take your medication as prescribed, even when you're traveling, to ensure you're getting the full benefit from it...\\n\\nWould you like me to connect you with your care team to discuss any challenges you might be facing with your medication schedule, especially when you're on the go?\"]",
+        "user: [\"Uh, no, I'm okay.\"]",
+        "assistant: [\"Alright, I hear you. I'll make a note that you missed two doses due to traveling.\\n\\nNow, some questions about your overall well-being... How has your mood been in the last week?\"]",
+        "user: [\"I'm okay. I'm yeah, a little whenever I get headache, I feel a little sadness, but other than that, I'm okay.\"]",
+        "assistant: [\"I hear you... it's completely understandable that a headache could affect your mood and bring on a little sadness. Thank you for sharing that with me.\\n\\nHow has your sleep been in the last week?\"]",
+        "user: ['Two days I was feeling sleeplessness but rest was okay. I was sleeping 5 hours a day.']",
+        "assistant: [\"I see... so for two days you experienced some sleeplessness, but otherwise, you've been getting around five hours of sleep each night.\\n\\nHow has your appetite been recently?\"]",
+        "user: ['Appetite is good.']",
+        "assistant: [\"That's good to hear... your appetite is good.\\n\\nAnd how about your functional capacity... Have you been able to manage your daily activities as you normally would?\"]",
+        "user: ['Yeah, on that front everything is fine.']",
+        "assistant: [\"Wonderful... I'm glad to hear everything is fine on that front.\\n\\nI've made notes of everything we've discussed today... the headache you've been experiencing, the missed medication doses due to travel, how your mood has been a little affected, and your sleep for the past week. I'll be sharing all of this with your care team.\\n\\nIs there anything else you'd like me to add for your care team, or any other questions you have for me today?\"]",
+        "user: [\"No, no, that's okay. Can you please sing me a song?\"]",
+        "assistant: [\"I appreciate you asking, Sarah... However, as an AI health agent, I'm not able to sing a song for you. My purpose is to help gather information for your care team and support you through these check-ins.\\n\\nIs there anything else I can assist you with regarding your check-in today?\"]",
+        "user: ['No, I am fine.']",
+        "assistant: [\"Alright... Thank you again for taking the time to speak with me today, Sarah. I'll make sure your care team receives all the information we've discussed.\\n\\nI hope you have a peaceful rest of your day. Goodbye.\"]"
+      ]
+    },
+    {
+      "date": "2026-02-10T12:49:19.955094",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes, we can talk.']",
+        "assistant: [\"Wonderful... Thank you for making time.\\n\\nLet's talk about your physical health... Have you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['Yeah, I I am feeling a little headache and skin rashes as well.']",
+        "assistant: ['I hear you... a headache and skin rashes. Thank you for sharing that with me.\\n\\nCould you tell me a little more about the headache... How would you describe the severity, on a']",
+        "user: ['So I just remember I was also feeling a little back pain.']",
+        "assistant: [\"Thank you for letting me know about the back pain as well... I'll make a note of that.\\n\\nGoing back to your headache for a moment... On a scale of one to ten, with one being very mild and ten being the worst pain imaginable, how would you describe the severity of your headache?\"]",
+        "user: ['Uh, it is married.']",
+        "assistant: ['Got it... so a mild headache.\\n\\nAnd how long have you been experiencing this mild headache?']",
+        "user: [\"I'm feeling like from past 5 days.\"]",
+        "assistant: ['I understand... so for about five days now.\\n\\nAnd how about the skin rashes you mentioned... Can you describe them a little bit for me?']",
+        "user: ['There is']",
+        "user: ['Like it is on deck and it is itching.']",
+        "assistant: ['I see... rashes on your neck that are itching. Thank you for that description.\\n\\nHow long have you been noticing these skin rashes?']",
+        "user: ['From past two days.']",
+        "assistant: [\"Got it... so for the past two days.\\n\\nI'll make sure to note all of these symptoms... the mild headache for five days, the itching skin rashes on your neck for two days, and the back pain... and share them with your care team.\\n\\nNow, I would like to ask you about your medication... Were you able to take all seven doses of your Toripalimab in the last week?\"]"
+      ]
+    }
+  ]
+}
