@@ -17,7 +17,7 @@
     "Penicillin"
   ],
   "provider": "Dr. Emily Carter",
-  "last_call": "2026-02-10T12:49:19.955094",
+  "last_call": "2026-02-11T14:28:37.760880",
   "call_history": [
     {
       "date": "2026-02-05T13:53:58.667651",
@@ -340,6 +340,41 @@
         "user: ['From past two days.']",
         "assistant: [\"Got it... so for the past two days.\\n\\nI'll make sure to note all of these symptoms... the mild headache for five days, the itching skin rashes on your neck for two days, and the back pain... and share them with your care team.\\n\\nNow, I would like to ask you about your medication... Were you able to take all seven doses of your Toripalimab in the last week?\"]"
       ]
+    },
+    {
+      "date": "2026-02-11T14:22:19.991499",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes, we can talk.']",
+        "assistant: [\"Wonderful... Thank you, Sarah.\\n\\nI'm an A.I. health agent, and I'm calling today for a periodic check-in to review your symptoms, medications, and overall well-being... The information we discuss will be shared with your care team.\\n\\nLet's begin by talking about your physical health... Have you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['Yeah, I was facing a little mild headache and skin rash.']",
+        "assistant: [\"Thank you for letting me know, Sarah... I understand you've been experiencing a mild headache and a skin rash.\\n\\nCould you tell me a little more about the headache... how severe would you say it's been on a scale of one to ten, with ten being the worst?\"]",
+        "user: ['Yeah, it was five, you can say five.']",
+        "assistant: ['Got it... a five out of ten... I understand.\\n\\nAnd how long have you been experiencing this headache?']",
+        "user: ['Like for the past few days, like 4 days.']",
+        "assistant: ['I see... so, for about four days now. Thank you for sharing that with me, Sarah.\\n\\nAnd regarding the']",
+        "user: ['Yeah.']",
+        "user: ['Yes, of course.']",
+        "assistant: ['Thank you, Sarah.\\n\\nRegarding the skin rash you mentioned... how long have you been experiencing that?']",
+        "user: ['Skin injuries I have been facing for like past 3 days.']",
+        "assistant: [\"Okay... so, the skin rash has been present for about three days. Thank you for clarifying that for me.\\n\\nI'll make sure\"]",
+        "user: ['Yeah.']",
+        "assistant: [\"I'll make sure to note both the headache and the skin rash for your care team.\\n\\nAre there any other side effects or symptoms you've experienced in the last week that you'd like me to mention?\"]",
+        "user: ['No, no symptoms.']",
+        "assistant: [\"Okay, thank you, Sarah.\\n\\nNow, I'd like to ask you about your medication... You are prescribed Toripalimab five hundred milligrams, twice daily.\\n\\nWere you able to take all seven doses of your Toripalimab in the last week?\"]",
+        "user: ['Yeah, I took all, but I missed a couple of doses because I was traveling outside.']",
+        "assistant: [\"I understand, Sarah... It sounds like you've had a bit of a disrupted schedule due to travel.\\n\\nJust to clarify, when you say you missed a couple of doses, could you tell me how many doses of your Toripalimab you might have missed in total over the last seven days?\"]",
+        "user: ['Three Rolls.']",
+        "assistant: [\"Thank you for clarifying, Sarah... so you missed three doses of your Toripalimab in the last week.\\n\\nI understand that travel can sometimes make it difficult to stick to a routine... It's really important to try and take all your prescribed doses of Toripalimab to ensure you get the full benefit of your medication.\\n\\nIs there anything\"]",
+        "user: ['Yes please.']",
+        "assistant: ['I hear']",
+        "user: ['Auto re thoda second late lagu ja.']",
+        "user: ['Yes, continue.']"
+      ]
+    },
+    {
+      "date": "2026-02-11T14:28:37.760880",
+      "transcript": []
     }
   ]
 }

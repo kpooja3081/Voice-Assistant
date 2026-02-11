@@ -2,12 +2,18 @@
 
 This agent handles outbound calls to patients for medication adherence
 follow-up and side effect reporting.
+
+Supports two modes:
+  - Inbound (WebRTC): Patient connects via browser, agent auto-joins
+  - Outbound (Twilio SIP): make_call.py dispatches agent + dials phone
 """
 
+import json
 import logging
 import os
 import uuid
 
+from livekit import api
 from livekit.agents import (
     AutoSubscribe,
     JobContext,
@@ -15,7 +21,6 @@ from livekit.agents import (
     cli,
 )
 from livekit.agents.voice import AgentSession, Agent
-from livekit.agents import inference
 from livekit.plugins import deepgram, elevenlabs, google, silero, sarvam
 
 from config import config
@@ -30,6 +35,9 @@ logger.setLevel(logging.INFO)
 # Patient ID for the current call (set via env or defaults to sample)
 PATIENT_ID = os.getenv("PATIENT_ID", "P001")
 
+# SIP trunk for outbound calls
+SIP_OUTBOUND_TRUNK_ID = os.getenv("SIP_OUTBOUND_TRUNK_ID", "")
+
 
 class PatientSupportAgent(Agent):
     """Patient support agent with medication adherence focus."""
@@ -41,21 +49,63 @@ class PatientSupportAgent(Agent):
 
 
 async def entrypoint(ctx: JobContext):
-    """Main entrypoint for the voice agent."""
+    """Main entrypoint for the voice agent.
+
+    Handles both inbound (WebRTC) and outbound (Twilio SIP) scenarios.
+    For outbound calls, job metadata contains {"phone_number": "+...", "patient_id": "P001"}.
+    """
     call_id = str(uuid.uuid4())[:8]
     logger.info(f"Starting patient support call: {call_id}")
 
+    # Parse job metadata for outbound call info
+    phone_number = None
+    patient_id = PATIENT_ID
+    if ctx.job.metadata:
+        try:
+            meta = json.loads(ctx.job.metadata)
+            phone_number = meta.get("phone_number")
+            patient_id = meta.get("patient_id", PATIENT_ID)
+            logger.info(f"Outbound call metadata: phone={phone_number}, patient={patient_id}")
+        except (json.JSONDecodeError, TypeError):
+            logger.warning("Could not parse job metadata, treating as inbound call")
+
     # Pre-load patient data (before call, zero latency impact)
-    patient_context = load_patient_context(PATIENT_ID)
+    patient_context = load_patient_context(patient_id)
     if patient_context:
         instructions = SYSTEM_PROMPT + patient_context
-        logger.info(f"Loaded patient context for {PATIENT_ID}")
+        logger.info(f"Loaded patient context for {patient_id}")
     else:
         instructions = SYSTEM_PROMPT
-        logger.warning(f"No patient data found for {PATIENT_ID}, using generic prompt")
+        logger.warning(f"No patient data found for {patient_id}, using generic prompt")
 
     # Connect to the LiveKit room
     await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)
+
+    # For outbound calls: dial the phone number via SIP trunk
+    if phone_number:
+        trunk_id = SIP_OUTBOUND_TRUNK_ID
+        if not trunk_id:
+            logger.error("SIP_OUTBOUND_TRUNK_ID not set. Cannot make outbound call.")
+            ctx.shutdown()
+            return
+
+        logger.info(f"Dialing {phone_number} via SIP trunk {trunk_id}...")
+        try:
+            await ctx.api.sip.create_sip_participant(
+                api.CreateSIPParticipantRequest(
+                    room_name=ctx.room.name,
+                    sip_trunk_id=trunk_id,
+                    sip_call_to=phone_number,
+                    participant_identity=f"phone-{phone_number}",
+                    participant_name="Patient (Phone)",
+                    play_dialtone=True,
+                )
+            )
+            logger.info(f"Call to {phone_number} connected!")
+        except Exception as e:
+            logger.error(f"Failed to dial {phone_number}: {e}")
+            ctx.shutdown()
+            return
 
     # Wait for a participant to join
     participant = await ctx.wait_for_participant()
@@ -71,6 +121,7 @@ async def entrypoint(ctx: JobContext):
     logger.info(f"  LLM: Google Gemini (model=gemini-2.5-flash)")
     logger.info(f"  TTS: {config.tts_provider.value}")
     logger.info(f"  VAD: Silero")
+    logger.info(f"  Mode: {'Outbound (SIP/Phone)' if phone_number else 'Inbound (WebRTC)'}")
 
     # Create the agent session
     session = AgentSession(
@@ -90,7 +141,7 @@ async def entrypoint(ctx: JobContext):
                 for msg in session.history.items
                 if hasattr(msg, "role") and hasattr(msg, "content")
             ]
-            save_call_notes(PATIENT_ID, history)
+            save_call_notes(patient_id, history)
         except Exception as e:
             logger.error(f"Failed to save call notes: {e}")
 
@@ -113,5 +164,6 @@ if __name__ == "__main__":
     cli.run_app(
         WorkerOptions(
             entrypoint_fnc=entrypoint,
+            agent_name="patient-support-agent",
         )
     )
