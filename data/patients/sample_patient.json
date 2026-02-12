@@ -17,7 +17,7 @@
     "Penicillin"
   ],
   "provider": "Dr. Emily Carter",
-  "last_call": "2026-02-11T14:28:37.760880",
+  "last_call": "2026-02-12T13:22:32.154859",
   "call_history": [
     {
       "date": "2026-02-05T13:53:58.667651",
@@ -374,6 +374,89 @@
     },
     {
       "date": "2026-02-11T14:28:37.760880",
+      "transcript": []
+    },
+    {
+      "date": "2026-02-12T12:32:46.948127",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes, we can talk.']",
+        "assistant: [\"Alright... thank you for making time for me.\\n\\nLet's talk about your physical health... Have you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['Yeah, I actually faced some symptoms. I am, I have a skin rash and mild headache.']",
+        "assistant: [\"I see... I'm sorry to hear that you're experiencing a skin rash and a mild headache.\\n\\nCould you tell me a little more about the skin rash... How long have you been experiencing it?\"]",
+        "user: [\"I've been experiencing it for the past few, like two days.\"]",
+        "assistant: ['Got it... And how would you describe the severity of the rash? Is it mild, moderate, or severe?']",
+        "user: ['Zyada hai, zyada thoda sa zyada hai scheme ji.']",
+        "assistant: ['I hear you... So, it sounds like the rash is a bit more than mild, perhaps moderate.\\n\\nAnd how long have you been experiencing the mild headache you mentioned?']",
+        "user: ['Two days se mein ho rahe hai']",
+        "assistant: ['Okay... And how would you describe the pain level for your headache on a scale of one to ten, with ten being the worst pain imaginable?']"
+      ]
+    },
+    {
+      "date": "2026-02-12T12:38:24.946863",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Haan, kid sakte hain but.']",
+        "assistant: [\"Okay... Thank you for making time for this call, Sarah.\\n\\nLet's begin by talking about your physical health... Have you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['Yeah, I thoda sa mild heavy tha aur skinless hai.']",
+        "assistant: [\"I hear you... So, you're experiencing some mild heaviness and skin rash.\\n\\nCould you tell me a little more about the skin rash? How long have you been experiencing it?\"]",
+        "user: ['Two days sir.']",
+        "assistant: [\"Got it... So, it's been about two days.\\n\\nIs the rash itchy, or does it cause any discomfort?\"]",
+        "user: ['It is DC.']",
+        "assistant: [\"I see... It's itchy.\\n\\nAnd is the mild heaviness you mentioned related to the rash, or is it something else?\"]",
+        "user: ['Uh, it is headache.']",
+        "assistant: ['Ah, I understand... So, the mild heaviness is actually a headache. Thank you for clarifying that for me.\\n\\nCould you describe the headache a little more? Is it constant, or does it come and go? And what would you say its severity is on a scale of one to ten, with ten being the most severe?']",
+        "user: [\"It's it's it's throbbing, it's throbbing.\"]",
+        "assistant: ['Hmm...']",
+        "user: ['just throbbing like uh']",
+        "assistant: ['I hear you... a throbbing headache.\\n\\nAnd how long have you been experiencing this throbbing headache, Sarah?']",
+        "user: ['Ek din se last of course past mhanje']",
+        "assistant: [\"Got it... So, you've been experiencing the throbbing headache for the last day.\\n\\nI understand that a throbbing headache and an itchy rash can both be quite uncomfortable. I'll make sure to note all of this for your care team.\\n\\nNow, I would like to ask you about your medication... You are\"]",
+        "user: ['But ek cheez ek one more side effect is there, one more side effect is there, can you please note that also?']",
+        "assistant: [\"Of course, Sarah... please tell me what other side effect you've been experiencing.\"]",
+        "user: ['Like']",
+        "user: ['Sleeplessness is there.']",
+        "assistant: [\"I hear you... So, sleeplessness is also something you're experiencing.\\n\\nHow long has this sleeplessness been an issue for you, Sarah?\"]",
+        "user: ['So first two days.']",
+        "assistant: [\"Okay... So, the sleeplessness has been present for the past two days.\\n\\nI understand that experiencing a throbbing headache, an itchy skin rash, and sleeplessness can be quite challenging. I'll make sure to note all these symptoms, their details, and how long you've been experiencing them, to share with your care team.\\n\\nNow, I would like to ask you about your medication... Were you able to take all seven doses of your Toripalimab five hundred milligrams in the last week?\"]"
+      ]
+    },
+    {
+      "date": "2026-02-12T12:43:05.709757",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Hello']"
+      ]
+    },
+    {
+      "date": "2026-02-12T13:10:11.520491",
+      "transcript": [
+        "assistant: [\"Hello... My name is Lila, calling from your patient support team.\\nI'm reaching out today for a quick check-in to see how you're doing...\\nIs this a good time to talk for a few minutes?\"]",
+        "user: ['Yes, we can talk.']",
+        "assistant: [\"Okay... Thank you for making time.\\n\\nLet's talk about your physical health... Have you experienced any side effects or symptoms in the last week?\"]",
+        "user: ['Yeah, I have mild headache and breathlessness.']",
+        "assistant: ['I see... Thank you for sharing that with me.\\n\\nCould you tell me a little more about the breathlessness... How severe would you say it is... on a scale of one to ten, where ten is very severe?']",
+        "user: ['It is, I would rate it five, and this happens when I sleep.']",
+        "assistant: ['I hear you... A five out of ten, and it happens when you sleep. I understand that can be quite unsettling.\\n\\nHow long have you been experiencing this breathlessness when you sleep?']",
+        "user: ['Pisli paach din mein teen baar hua hai.']",
+        "assistant: [\"Got it... So, it's happened three times in the past five days, specifically when you're sleeping. I understand that can feel quite disruptive to your rest.\\n\\nIs there anything else about these symptoms, or any other side effects you've experienced in the last week, that you'd like me to note for your care team?\"]",
+        "user: ['Okay.']",
+        "assistant: ['Alright... Thank you for sharing all of']",
+        "user: [\"No, no, no, I don't have any idea.\"]",
+        "assistant: [\"Okay... Understood. Thank you for clarifying.\\n\\nNow, I would like to ask you about your medication... You're taking Toripalimab twice daily... Were you able to take all 14 doses of your Toripalimab in the last week, as prescribed?\"]",
+        "user: ['Ya, maine pura liya hai, pura liya hai, pura liya hai.']",
+        "assistant: [\"That's great to hear... You've taken all your doses as prescribed. That's really important for your treatment.\\n\\nPlease do continue to take all your doses of Toripalimab exactly as your doctor has instructed... It helps ensure the best possible outcome.\\n\\nDo you have any questions about your Toripalimab medication that I can try to answer, or note for your care team?\"]",
+        "user: [\"No, I don't have. Mere paas koi question nahi hai. Pir kya aap mere liye gaana ga sakte ho?\"]",
+        "assistant: [\"I hear you... That's a kind request, and I appreciate you asking. My role here is to focus on your health check-in and gather all the important information about your well-being for your care team.\\n\\nSo, I'm not able to sing, but I'm happy to continue our conversation... Now, some questions about your overall well-being... How has your mood been in the last week?\"]",
+        "user: ['Uh, it was good.']",
+        "assistant: [\"That's wonderful to hear... I'm glad your mood has been good.\\n\\nHow has your sleep been in the last week, apart from the breathlessness you mentioned? Have you been getting enough restful sleep?\"]",
+        "user: [\"Yes, I'm getting sleep. One more thing, can we disconnect now? I just got input and can you call me like in half an hour, we can continue and let them.\"]",
+        "assistant: [\"I understand... You'd like to pause and continue later.\\n\\nUnfortunately, my system doesn't allow me to schedule a call back for exactly half an hour, or to pick up the conversation exactly where we left off...\\n\\nWould you prefer to complete the check-in now if you have a few more minutes, or would you like me to schedule a full check-in for you at a different time, perhaps tomorrow or another day?\"]",
+        "user: ['Full second.']"
+      ]
+    },
+    {
+      "date": "2026-02-12T13:22:32.154859",
       "transcript": []
     }
   ]

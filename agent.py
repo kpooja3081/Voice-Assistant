@@ -21,6 +21,7 @@ from livekit.agents import (
     cli,
 )
 from livekit.agents.voice import AgentSession, Agent
+from livekit.agents import BackgroundAudioPlayer, BuiltinAudioClip, AudioConfig
 from livekit.plugins import deepgram, elevenlabs, google, silero, sarvam
 
 from config import config
@@ -129,6 +130,17 @@ async def entrypoint(ctx: JobContext):
         stt=stt,
         llm=llm,
         tts=tts,
+        # Interruption handling: filter coughs/noise, require intentional speech
+        min_interruption_duration=1.5,
+        min_interruption_words=3,
+    )
+
+    # Subtle typing sound during "thinking" gap (auto-stops when agent speaks)
+    background_audio = BackgroundAudioPlayer(
+        thinking_sound=AudioConfig(
+            source=BuiltinAudioClip.KEYBOARD_TYPING,
+            volume=0.25,
+        ),
     )
 
     # Save conversation notes when participant disconnects (after call, zero latency)
@@ -145,11 +157,49 @@ async def entrypoint(ctx: JobContext):
         except Exception as e:
             logger.error(f"Failed to save call notes: {e}")
 
+    # --- Debug logging: trace full pipeline (correct event names for v1.4.1) ---
+    @session.on("agent_state_changed")
+    def on_agent_state(ev):
+        logger.info(f"[PIPELINE] agent_state: {ev.old_state} -> {ev.new_state}")
+
+    @session.on("user_state_changed")
+    def on_user_state(ev):
+        logger.info(f"[PIPELINE] user_state: {ev.old_state} -> {ev.new_state}")
+
+    @session.on("user_input_transcribed")
+    def on_user_input(ev):
+        logger.info(f"[PIPELINE] user_input_transcribed: {ev}")
+
+    @session.on("speech_created")
+    def on_speech_created(ev):
+        logger.info(f"[PIPELINE] speech_created: source={ev.source}, user_initiated={ev.user_initiated}")
+
+    @session.on("conversation_item_added")
+    def on_conv_item(ev):
+        item = ev.item
+        role = getattr(item, "role", "?")
+        content = getattr(item, "content", "")
+        text = str(content)[:120] if content else ""
+        logger.info(f"[PIPELINE] conversation_item_added: role={role}, text={text}")
+
+    @session.on("error")
+    def on_error(ev):
+        logger.error(f"[PIPELINE] ERROR from {ev.source}: {ev.error}")
+
+    @session.on("agent_false_interruption")
+    def on_false_interruption(ev):
+        logger.info(f"[PIPELINE] false_interruption: resumed={ev.resumed}")
+
+    @session.on("close")
+    def on_close(ev):
+        logger.info(f"[PIPELINE] session closed: reason={ev.reason}, error={ev.error}")
+
     # Start the session with our agent
     await session.start(
         room=ctx.room,
         agent=PatientSupportAgent(instructions=instructions),
     )
+    await background_audio.start(room=ctx.room, agent_session=session)
 
     # Send initial greeting
     greeting = get_initial_greeting()

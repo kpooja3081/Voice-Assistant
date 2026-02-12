@@ -4,6 +4,7 @@ import logging
 from typing import TYPE_CHECKING
 
 from livekit.plugins import deepgram, elevenlabs
+from livekit.plugins.elevenlabs import VoiceSettings
 
 if TYPE_CHECKING:
     from config import Config
@@ -42,6 +43,12 @@ def get_tts(config: "Config"):
                 api_key=config.elevenlabs.api_key,
                 voice_id=config.elevenlabs.voice_id,
                 model=config.elevenlabs.model_id,
+                voice_settings=VoiceSettings(
+                    stability=0.4,           # Lower = more expressive/emotional range
+                    similarity_boost=0.75,    # Keep close to original voice character
+                    style=0.35,              # Moderate style exaggeration for warmth
+                    use_speaker_boost=True,  # Clearer voice on phone audio
+                ),
             )
 
         case TTSProvider.DEEPGRAM:

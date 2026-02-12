@@ -15,6 +15,7 @@ An AI-powered voice agent built with LiveKit that makes outbound phone calls to 
 │  └──────────┘    └──────────────┘    └──────────────┘    └──────────────┘  │
 │                                                                             │
 │  Silero VAD handles: Interruption, Turn-taking, Silence detection           │
+│  BackgroundAudioPlayer: Thinking sound fills silence during LLM generation  │
 └─────────────────────────────────────────────────────────────────────────────┘
                                     │
                           ┌─────────▼──────────┐
@@ -31,6 +32,8 @@ An AI-powered voice agent built with LiveKit that makes outbound phone calls to 
 - **Inbound calls** via WebRTC (LiveKit Playground)
 - **Modular STT/TTS** — 6+ providers each, switchable via env vars
 - **Patient context pre-loading** — zero latency impact on calls
+- **Low-latency responses** — three-layer approach: background thinking sound, LLM filler phrases, and preemptive generation
+- **Smart interruption handling** — filters coughs/noise (requires 1.5s + 3 words), resumes on false interruptions
 - **Assessment agents** — PHQ-2 mental health, sleep, appetite, side effects with severity scoring
 - **Auto-save transcripts** — conversation saved to patient JSON on disconnect
 - **Strict guardrails** — agent never provides medical advice or discusses unrelated topics
@@ -302,6 +305,7 @@ Update `ELEVENLABS_VOICE_ID` in `.env`. Browse voices at [ElevenLabs Voice Libra
 Edit `prompts/patient_support.py` to change:
 - Conversation sections and questions
 - Tone and style guidelines
+- Response pacing (filler phrases for low-latency feel)
 - Guardrails and boundaries
 
 ### Add Patient Records
@@ -437,6 +441,31 @@ Or use a **SIP softphone** (Opal, Opal, Zoiper, Opal) connected directly to Live
 | Data privacy | Data on LiveKit servers | Full control |
 | HIPAA compliance | LiveKit Cloud is HIPAA-eligible | You manage compliance |
 
+## Latency Reduction & Interruption Handling
+
+The agent uses a three-layer approach to minimize perceived response latency:
+
+| Layer | Mechanism | Effect |
+|-------|-----------|--------|
+| **Background audio** | `BackgroundAudioPlayer` plays subtle keyboard typing during thinking | Fills dead silence immediately (~0ms) |
+| **Filler phrases** | LLM instructed to start every response with "I see...", "Got it...", etc. | First tokens stream fast (~100ms), TTS synthesizes quickly (~300ms) |
+| **Preemptive generation** | `preemptive_generation=True` on `AgentSession` | LLM starts generating on partial transcript before user finishes |
+
+Interruption handling prevents noise from cutting off the agent:
+
+| Parameter | Value | Purpose |
+|-----------|-------|---------|
+| `min_interruption_duration` | `1.5s` | Filters coughs (<0.5s) and "hmm" (~0.8s) |
+| `min_interruption_words` | `3` | Requires 3+ transcribed words, not just noise |
+| `false_interruption_timeout` | `2.0s` | If user goes silent after triggering interruption, agent resumes |
+| `resume_false_interruption` | `True` | Agent resumes from where it left off (doesn't restart) |
+
+### Tuning Tips
+
+- **Phone calls**: Increase thinking sound volume from `0.15` to `0.2-0.3` in `agent.py` (phone audio is compressed)
+- **Too aggressive filtering**: Lower `min_interruption_duration` to `1.0` if legitimate interruptions are being ignored
+- **Too sensitive**: Raise `min_interruption_words` to `4` if short phrases still interrupt
+
 ## Troubleshooting
 
 | Issue | Solution |
@@ -444,7 +473,10 @@ Or use a **SIP softphone** (Opal, Opal, Zoiper, Opal) connected directly to Live
 | Agent not responding | Check `python agent.py dev` is running, verify LiveKit credentials |
 | Call not ringing | Verify `SIP_OUTBOUND_TRUNK_ID` in `.env`, run `python test_twilio_sip.py` |
 | Poor audio quality | Check internet connection, try `TTS_PROVIDER=deepgram` for lower latency |
-| High latency | Use `elevenlabs` with `eleven_turbo_v2`, ensure Gemini Flash (not Pro) |
+| High latency | Preemptive generation + filler phrases should help; also try `elevenlabs` with `eleven_turbo_v2`, ensure Gemini Flash (not Pro) |
+| Coughs/noise interrupting agent | Increase `min_interruption_duration` or `min_interruption_words` in `agent.py` |
+| Can't interrupt agent | Lower `min_interruption_duration` (default 1.5s) — legitimate speech is ~2s+ |
+| Thinking sound too quiet on phone | Increase `volume` from `0.15` to `0.2-0.3` in `BackgroundAudioPlayer` config |
 | STT not understanding | Try switching `STT_PROVIDER` (sarvam for Indian English, deepgram for general) |
 | Call drops immediately | Check Twilio trunk credentials, verify phone number is associated with trunk |
 | "Trunk not found" error | Run `python setup_sip_trunk.py --list` to verify trunk exists |
