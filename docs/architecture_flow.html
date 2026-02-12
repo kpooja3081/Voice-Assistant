@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lila — Architecture Flow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0e17;
+      --surface: #131825;
+      --surface-hover: #1a2035;
+      --border: #1e2a42;
+      --text: #e2e8f0;
+      --text-muted: #8892b0;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --accent-glow: rgba(124, 58, 237, .35);
+      --green: #34d399;
+      --green-glow: rgba(52, 211, 153, .25);
+      --blue: #38bdf8;
+      --blue-glow: rgba(56, 189, 248, .25);
+      --pink: #f472b6;
+      --pink-glow: rgba(244, 114, 182, .25);
+      --orange: #fb923c;
+      --orange-glow: rgba(251, 146, 60, .25);
+      --yellow: #facc15;
+      --red: #f87171;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Background grid ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -20%, rgba(124,58,237,.12), transparent),
+        linear-gradient(180deg, transparent 0%, var(--bg) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Nav ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 32px;
+      background: rgba(11,14,23,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .logo {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--pink));
+      display: grid; place-items: center;
+      font-weight: 800; font-size: 18px; color: #fff;
+    }
+    nav h1 { font-size: 18px; font-weight: 700; letter-spacing: -.3px; }
+    nav h1 span { color: var(--accent-light); }
+    nav .pills {
+      margin-left: auto; display: flex; gap: 6px;
+    }
+    nav .pills a {
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+      color: var(--text-muted); text-decoration: none;
+      transition: all .25s;
+    }
+    nav .pills a:hover, nav .pills a.active {
+      background: var(--accent-glow); color: var(--accent-light);
+    }
+
+    /* ── Sections ─── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+    section {
+      padding: 80px 0 40px;
+    }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.6px;
+      color: var(--accent-light); margin-bottom: 10px;
+    }
+    .section-label .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-light); }
+    .section-title { font-size: 32px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 6px; }
+    .section-subtitle { color: var(--text-muted); font-size: 15px; max-width: 620px; margin-bottom: 36px; }
+
+    /* ── Card ─── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      border-color: var(--accent);
+    }
+
+    /* ── Hero ─── */
+    .hero {
+      text-align: center; padding: 100px 0 60px;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 800; letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--accent-light), var(--pink), var(--blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; }
+    .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      border: 1px solid var(--border); background: var(--surface);
+    }
+    .badge .bdot { width: 7px; height: 7px; border-radius: 50%; }
+    .badge.b-green .bdot  { background: var(--green);  box-shadow: 0 0 8px var(--green-glow); }
+    .badge.b-blue  .bdot  { background: var(--blue);   box-shadow: 0 0 8px var(--blue-glow); }
+    .badge.b-pink  .bdot  { background: var(--pink);   box-shadow: 0 0 8px var(--pink-glow); }
+    .badge.b-orange .bdot { background: var(--orange); box-shadow: 0 0 8px var(--orange-glow); }
+
+    /* ── Pipeline Diagram ─── */
+    .pipeline-wrapper {
+      position: relative;
+      overflow-x: auto;
+      padding: 20px 0 40px;
+    }
+    .pipeline {
+      display: flex; align-items: center; gap: 0;
+      min-width: max-content; justify-content: center;
+    }
+    .pipe-node {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 24px 22px; border-radius: var(--radius); text-align: center;
+      background: var(--surface); border: 1px solid var(--border);
+      min-width: 150px; position: relative;
+      transition: all .3s;
+    }
+    .pipe-node:hover {
+      border-color: var(--accent); box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-4px);
+    }
+    .pipe-node .icon { font-size: 28px; margin-bottom: 4px; }
+    .pipe-node .label { font-size: 13px; font-weight: 600; }
+    .pipe-node .sublabel { font-size: 11px; color: var(--text-muted); }
+    .pipe-arrow {
+      display: flex; align-items: center; padding: 0 6px;
+      color: var(--accent-light); font-size: 22px;
+      animation: pulseArrow 2s ease-in-out infinite;
+    }
+    @keyframes pulseArrow {
+      0%,100% { opacity: .5; transform: translateX(0); }
+      50%     { opacity: 1;  transform: translateX(3px); }
+    }
+    .pipe-sub {
+      position: absolute; bottom: -52px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 500;
+      background: var(--surface); border: 1px solid var(--border);
+      white-space: nowrap; color: var(--text-muted);
+    }
+    .pipe-sub .sub-dot { width: 5px; height: 5px; border-radius: 50%; }
+
+    /* ── Data-flow timeline ─── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 11px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(180deg, var(--accent), var(--blue), var(--green));
+      border-radius: 2px;
+    }
+    .tl-step { position: relative; margin-bottom: 36px; }
+    .tl-step:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -32px; top: 4px;
+      width: 22px; height: 22px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 11px; font-weight: 700; color: #fff;
+      border: 2px solid var(--bg);
+    }
+    .tl-step:nth-child(1) .tl-dot { background: var(--accent); }
+    .tl-step:nth-child(2) .tl-dot { background: var(--blue); }
+    .tl-step:nth-child(3) .tl-dot { background: var(--pink); }
+    .tl-step:nth-child(4) .tl-dot { background: var(--green); }
+    .tl-step:nth-child(5) .tl-dot { background: var(--orange); }
+    .tl-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .tl-body { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+    .tl-body code {
+      background: rgba(124,58,237,.15); color: var(--accent-light);
+      padding: 2px 7px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    }
+
+    /* ── State Machine ─── */
+    .state-row {
+      display: flex; align-items: center; gap: 0;
+      justify-content: center; flex-wrap: wrap;
+      padding: 20px 0;
+    }
+    .state-pill {
+      padding: 10px 22px; border-radius: 26px; font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border); background: var(--surface);
+      transition: all .3s;
+    }
+    .state-pill:hover { border-color: var(--accent); background: rgba(124,58,237,.08); }
+    .state-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .state-arrow-right {
+      padding: 0 8px; color: var(--accent-light); font-size: 18px;
+    }
+    .state-loop {
+      text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 8px;
+    }
+
+    /* ── Cards grid ─── */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+
+    .agent-card { position: relative; overflow: hidden; }
+    .agent-card .accent-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .agent-card:nth-child(1) .accent-bar { background: var(--accent); }
+    .agent-card:nth-child(2) .accent-bar { background: var(--blue); }
+    .agent-card:nth-child(3) .accent-bar { background: var(--green); }
+    .agent-card:nth-child(4) .accent-bar { background: var(--pink); }
+    .agent-card .agent-icon { font-size: 28px; margin-bottom: 8px; }
+    .agent-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .agent-card p  { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+    .tag {
+      display: inline-block; padding: 3px 10px; border-radius: 12px;
+      font-size: 10px; font-weight: 600; letter-spacing: .4px;
+    }
+    .tag-purple { background: rgba(124,58,237,.15); color: var(--accent-light); }
+    .tag-green  { background: rgba(52,211,153,.15);  color: var(--green); }
+    .tag-blue   { background: rgba(56,189,248,.15);  color: var(--blue); }
+    .tag-pink   { background: rgba(244,114,182,.15); color: var(--pink); }
+    .tag-orange { background: rgba(251,146,60,.15);  color: var(--orange); }
+
+    /* ── Table ─── */
+    .styled-table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+      background: var(--surface); border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .styled-table thead { background: rgba(124,58,237,.08); }
+    .styled-table th {
+      text-align: left; padding: 12px 16px; font-weight: 600; font-size: 12px;
+      text-transform: uppercase; letter-spacing: .8px; color: var(--accent-light);
+    }
+    .styled-table td { padding: 12px 16px; border-top: 1px solid var(--border); }
+    .styled-table tbody tr { transition: background .2s; }
+    .styled-table tbody tr:hover { background: var(--surface-hover); }
+
+    /* ── File tree ─── */
+    .file-tree {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      line-height: 2; color: var(--text-muted);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 32px;
+      overflow-x: auto;
+    }
+    .file-tree .dir  { color: var(--blue); font-weight: 600; }
+    .file-tree .file { color: var(--text); }
+    .file-tree .comment { color: var(--text-muted); opacity: .55; }
+
+    /* ── Prompt cards ─── */
+    .prompt-section {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .prompt-chip {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: var(--radius-sm);
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 13px; font-weight: 500; transition: all .25s;
+    }
+    .prompt-chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .prompt-chip .chip-num {
+      width: 22px; height: 22px; border-radius: 6px;
+      display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #fff;
+      background: var(--accent);
+    }
+
+    /* ── Latency table highlight ─── */
+    .latency-val { font-weight: 700; color: var(--green); }
+
+    /* ── Scroll reveal ─── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Footer ─── */
+    footer {
+      text-align: center; padding: 48px 0; font-size: 12px; color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ─── */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 32px; }
+      nav .pills { display: none; }
+      .pipeline { flex-direction: column; }
+      .pipe-arrow { transform: rotate(90deg); }
+      .pipe-sub { bottom: -30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <div class="logo">L</div>
+  <h1>Lila <span>Architecture</span></h1>
+  <div class="pills">
+    <a href="#overview">Overview</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#dataflow">Data Flow</a>
+    <a href="#components">Components</a>
+    <a href="#agents">Agents</a>
+    <a href="#providers">Providers</a>
+    <a href="#filemap">File Map</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="container">
+<section class="hero reveal">
+  <h1>Lila Patient Support<br>Voice Agent</h1>
+  <p>Real-time voice AI that makes outbound calls to cancer patients for periodic check-ins — streaming pipeline, sub-second latency.</p>
+  <div class="hero-badges">
+    <span class="badge b-green"><span class="bdot"></span>LiveKit Cloud</span>
+    <span class="badge b-blue"><span class="bdot"></span>Gemini 2.5 Flash</span>
+    <span class="badge b-pink"><span class="bdot"></span>ElevenLabs TTS</span>
+    <span class="badge b-orange"><span class="bdot"></span>Sarvam / Deepgram STT</span>
+  </div>
+</section>
+
+<!-- ═══════════════ PIPELINE ═══════════════ -->
+<section id="pipeline" class="reveal">
+  <div class="section-label"><span class="dot"></span>System Overview</div>
+  <h2 class="section-title">Streaming Pipeline</h2>
+  <p class="section-subtitle">Each component processes data as it arrives, minimising end-to-end latency inside LiveKit Cloud.</p>
+
+  <div class="pipeline-wrapper">
+    <div class="pipeline">
+      <!-- Node: Patient -->
+      <div class="pipe-node">
+        <div class="icon">📱</div>
+        <div class="label">Patient</div>
+        <div class="sublabel">Phone / WebRTC</div>
+        <div class="pipe-sub"><span class="sub-dot" style="background:var(--orange)"></span> Twilio SIP Trunk</div>
+      </div>
+      <div class="pipe-arrow">⟶</div>
+      <!-- Node: VAD -->
+      <div class="pipe-node">
+        <div class="icon">🔉</div>
+        <div class="label">Silero VAD</div>
+        <div class="sublabel">Activity Detect</div>
+      </div>
+      <div class="pipe-arrow">⟶</div>
+      <!-- Node: STT -->
+      <div class="pipe-node">
+        <div class="icon">🗣️</div>
+        <div class="label">STT</div>
+        <div class="sublabel">Sarvam / Deepgram</div>
+      </div>
+      <div class="pipe-arrow">⟶</div>
+      <!-- Node: LLM -->
+      <div class="pipe-node" style="border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow);">
+        <div class="icon">🧠</div>
+        <div class="label">Gemini 2.5 Flash</div>
+        <div class="sublabel">LLM (streaming)</div>
+        <div class="pipe-sub"><span class="sub-dot" style="background:var(--blue)"></span> Background Audio Player</div>
+      </div>
+      <div class="pipe-arrow">⟶</div>
+      <!-- Node: TTS -->
+      <div class="pipe-node">
+        <div class="icon">🔊</div>
+        <div class="label">ElevenLabs TTS</div>
+        <div class="sublabel">Warm & Empathetic</div>
+      </div>
+      <div class="pipe-arrow">⟶</div>
+      <!-- Node: Patient back -->
+      <div class="pipe-node">
+        <div class="icon">👂</div>
+        <div class="label">Patient Hears</div>
+        <div class="sublabel">Response</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top: 56px;">
+    <div class="card" style="display:inline-block; padding: 14px 28px; font-size: 13px;">
+      <strong style="color:var(--accent-light);">AgentSession Config:</strong>&nbsp;
+      <code style="color:var(--green)">min_interruption_duration = 1.5s</code> &nbsp;·&nbsp;
+      <code style="color:var(--green)">min_interruption_words = 3</code>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DATA FLOW ═══════════════ -->
+<section id="dataflow" class="reveal">
+  <div class="section-label"><span class="dot"></span>Data Flow</div>
+  <h2 class="section-title">Outbound Call Flow</h2>
+  <p class="section-subtitle">Primary use case — how a call is dispatched, dialled, and managed end-to-end.</p>
+
+  <div class="grid-2">
+    <!-- Timeline -->
+    <div>
+      <div class="timeline">
+        <div class="tl-step">
+          <div class="tl-dot">1</div>
+          <div class="tl-title">make_call.py</div>
+          <div class="tl-body">
+            Creates LiveKit room via API.<br>
+            Dispatches agent with metadata:<br>
+            <code>{phone_number, patient_id}</code>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-dot">2</div>
+          <div class="tl-title">LiveKit Cloud</div>
+          <div class="tl-body">
+            Assigns job to running <code>agent.py</code> worker.
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-dot">3</div>
+          <div class="tl-title">agent.py — Entrypoint</div>
+          <div class="tl-body">
+            Parses job metadata → <code>phone_number</code> + <code>patient_id</code><br>
+            <code>load_patient_context()</code> → injects into system prompt<br>
+            Connects to LiveKit room<br>
+            Dials via <code>ctx.api.sip.create_sip_participant()</code><br>
+            <span style="color:var(--text-muted); font-size:11px;">LiveKit SIP Bridge → Twilio → PSTN → Patient</span><br>
+            Creates pipeline: VAD + STT + LLM + TTS<br>
+            Starts <code>AgentSession</code> + <code>BackgroundAudioPlayer</code><br>
+            Speaks initial greeting via <code>session.say()</code>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-dot">4</div>
+          <div class="tl-title">Real-time Conversation Loop</div>
+          <div class="tl-body">
+            Patient speaks → <strong>Silero VAD</strong><br>
+            Audio → <strong>STT</strong> → text transcript<br>
+            Transcript → <strong>LLM</strong> → response (streaming)<br>
+            Response → <strong>TTS</strong> → audio → patient hears<br>
+            Thinking gap: <span style="color:var(--yellow)">typing sound ♪</span>
+          </div>
+        </div>
+        <div class="tl-step">
+          <div class="tl-dot">5</div>
+          <div class="tl-title">Call Ends</div>
+          <div class="tl-body">
+            <code>participant_disconnected</code> event fires<br>
+            <code>save_call_notes()</code> → appends transcript to patient JSON<br>
+            Session closes
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inbound + State Machine -->
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="card">
+        <h3 style="font-size:16px; font-weight:700; margin-bottom:10px;">
+          <span style="color:var(--blue);">⚡</span> Inbound Call (WebRTC)
+        </h3>
+        <p style="font-size:13px; color:var(--text-muted);">
+          Patient opens LiveKit Playground in browser → LiveKit auto-dispatches agent 
+          (<code>agent_name="patient-support-agent"</code>) → same pipeline as outbound, minus the SIP dialling step.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:16px; font-weight:700; margin-bottom:14px;">
+          <span style="color:var(--accent-light);">⟳</span> AgentSession State Machine
+        </h3>
+        <div class="state-row">
+          <div class="state-pill">initializing</div>
+          <div class="state-arrow-right">→</div>
+          <div class="state-pill active">listening</div>
+          <div class="state-arrow-right">→</div>
+          <div class="state-pill">thinking</div>
+          <div class="state-arrow-right">→</div>
+          <div class="state-pill">speaking</div>
+        </div>
+        <div class="state-loop">↻ loops back to <strong>listening</strong></div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:16px; font-weight:700; margin-bottom:10px;">
+          <span style="color:var(--orange);">🛡️</span> Interruption Handling
+        </h3>
+        <ul style="font-size:13px; color:var(--text-muted); list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
+          <li>• <strong style="color:var(--text)">1.5 s</strong> min duration — ignores coughs, "hmm"</li>
+          <li>• <strong style="color:var(--text)">3+ words</strong> required to count as interruption</li>
+          <li>• False interruption → agent resumes from where it left off</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COMPONENTS ═══════════════ -->
+<section id="components" class="reveal">
+  <div class="section-label"><span class="dot"></span>Component Architecture</div>
+  <h2 class="section-title">Core Components</h2>
+  <p class="section-subtitle">The main orchestrator creates and wires all components within the LiveKit pipeline.</p>
+
+  <div class="grid-3" style="margin-bottom:32px;">
+    <div class="card">
+      <div style="font-size:24px; margin-bottom:8px;">🤖</div>
+      <h3 style="font-size:15px; font-weight:700; margin-bottom:4px;">PatientSupportAgent</h3>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
+        Extends <code>livekit.agents.voice.Agent</code>. Holds system prompt (instructions).
+      </p>
+      <span class="tag tag-purple">agent.py</span>
+    </div>
+    <div class="card">
+      <div style="font-size:24px; margin-bottom:8px;">⚙️</div>
+      <h3 style="font-size:15px; font-weight:700; margin-bottom:4px;">AgentSession</h3>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
+        LiveKit framework. Manages the VAD → STT → LLM → TTS loop.
+      </p>
+      <span class="tag tag-blue">LiveKit SDK</span>
+    </div>
+    <div class="card">
+      <div style="font-size:24px; margin-bottom:8px;">🎵</div>
+      <h3 style="font-size:15px; font-weight:700; margin-bottom:4px;">BackgroundAudioPlayer</h3>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">
+        LiveKit built-in. Plays typing sound during thinking state.
+      </p>
+      <span class="tag tag-green">Built-in</span>
+    </div>
+  </div>
+
+  <!-- Prompt System -->
+  <div class="card" style="margin-bottom: 32px;">
+    <h3 style="font-size:16px; font-weight:700; margin-bottom:14px;">📋 Prompt System <span style="font-size:12px; color:var(--text-muted); font-weight:400;">prompts/patient_support.py</span></h3>
+    <div class="prompt-section">
+      <div class="prompt-chip"><span class="chip-num">1</span> YOUR ROLE</div>
+      <div class="prompt-chip"><span class="chip-num">2</span> TONE & STYLE</div>
+      <div class="prompt-chip"><span class="chip-num">3</span> RESPONSE PACING</div>
+      <div class="prompt-chip"><span class="chip-num">4</span> TTS FORMATTING</div>
+      <div class="prompt-chip"><span class="chip-num" style="background:var(--blue)">5</span> CALL PROTOCOL</div>
+      <div class="prompt-chip"><span class="chip-num" style="background:var(--red)">6</span> EMERGENCY PROTOCOL</div>
+      <div class="prompt-chip"><span class="chip-num" style="background:var(--orange)">7</span> GUARDRAILS</div>
+    </div>
+    <div style="margin-top: 16px; padding: 14px 18px; border-radius:var(--radius-sm); background: rgba(124,58,237,.06); border:1px solid var(--border); font-size:12px; color:var(--text-muted);">
+      <strong style="color:var(--accent-light);">Call Protocol Sections:</strong>
+      &nbsp; 1. Symptoms & Side Effects &nbsp;→&nbsp; 2. Medication Adherence &nbsp;→&nbsp; 3. Wellbeing (mood, sleep, appetite) &nbsp;→&nbsp; 4. Closing & Next Steps
+    </div>
+    <div style="margin-top: 10px; font-size:12px; color:var(--text-muted);">
+      Patient context appended at runtime: <code>instructions = SYSTEM_PROMPT + load_patient_context(patient_id)</code>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ASSESSMENT AGENTS ═══════════════ -->
+<section id="agents" class="reveal">
+  <div class="section-label"><span class="dot"></span>Assessment Agents</div>
+  <h2 class="section-title">LLM-Callable Tools</h2>
+  <p class="section-subtitle">Tool functions the LLM can invoke via function calling. Registered through <code>AssessmentFunctions</code> (FunctionContext).</p>
+
+  <div class="grid-4">
+    <div class="card agent-card">
+      <div class="accent-bar"></div>
+      <div class="agent-icon">🧠</div>
+      <h3>Mental Health</h3>
+      <p>PHQ-2 depression screening. Score 0–6, flag ≥ 3.</p>
+      <span class="tag tag-purple">mental_health.py</span>
+    </div>
+    <div class="card agent-card">
+      <div class="accent-bar"></div>
+      <div class="agent-icon">😴</div>
+      <h3>Sleep</h3>
+      <p>Sleep duration + quality + problem type assessment.</p>
+      <span class="tag tag-blue">sleep.py</span>
+    </div>
+    <div class="card agent-card">
+      <div class="accent-bar"></div>
+      <div class="agent-icon">🍽️</div>
+      <h3>Appetite</h3>
+      <p>Appetite + weight loss %. Flag &gt; 5%.</p>
+      <span class="tag tag-green">appetite.py</span>
+    </div>
+    <div class="card agent-card">
+      <div class="accent-bar"></div>
+      <div class="agent-icon">💊</div>
+      <h3>Side Effects</h3>
+      <p>17 side effects × 3 severity levels + aliases.</p>
+      <span class="tag tag-pink">side_effects.py</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROVIDERS ═══════════════ -->
+<section id="providers" class="reveal">
+  <div class="section-label"><span class="dot"></span>Provider Factories</div>
+  <h2 class="section-title">STT & TTS Providers</h2>
+  <p class="section-subtitle">Factory pattern — switch providers via env vars without code changes.</p>
+
+  <div class="grid-2" style="margin-bottom:32px;">
+    <div>
+      <table class="styled-table">
+        <thead><tr><th>STT Provider</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Sarvam</td><td><span class="tag tag-green">Active</span></td></tr>
+          <tr><td>Deepgram</td><td><span class="tag tag-blue">Default</span></td></tr>
+          <tr><td>OpenAI</td><td><span class="tag tag-purple">Available</span></td></tr>
+          <tr><td>Google</td><td><span class="tag tag-purple">Available</span></td></tr>
+          <tr><td>Azure</td><td><span class="tag tag-purple">Available</span></td></tr>
+          <tr><td>AssemblyAI</td><td><span class="tag tag-purple">Available</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="styled-table">
+        <thead><tr><th>TTS Provider</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>ElevenLabs</td><td><span class="tag tag-green">Active</span></td></tr>
+          <tr><td>Deepgram</td><td><span class="tag tag-blue">Default</span></td></tr>
+          <tr><td>OpenAI</td><td><span class="tag tag-purple">Available</span></td></tr>
+          <tr><td>Google</td><td><span class="tag tag-purple">Available</span></td></tr>
+          <tr><td>Azure</td><td><span class="tag tag-purple">Available</span></td></tr>
+          <tr><td>Cartesia</td><td><span class="tag tag-purple">Available</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="max-width:480px;">
+    <h3 style="font-size:14px; font-weight:700; margin-bottom:10px;">🎙️ ElevenLabs Voice Settings</h3>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size:13px;">
+      <div>stability <strong style="color:var(--accent-light)">0.4</strong></div>
+      <div style="color:var(--text-muted);">More expressive range</div>
+      <div>similarity_boost <strong style="color:var(--accent-light)">0.75</strong></div>
+      <div style="color:var(--text-muted);">True to original voice</div>
+      <div>style <strong style="color:var(--accent-light)">0.35</strong></div>
+      <div style="color:var(--text-muted);">Moderate warmth</div>
+      <div>speaker_boost <strong style="color:var(--green)">true</strong></div>
+      <div style="color:var(--text-muted);">Clearer on phone</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ LATENCY ═══════════════ -->
+<section id="latency" class="reveal">
+  <div class="section-label"><span class="dot"></span>Performance</div>
+  <h2 class="section-title">Latency Reduction</h2>
+  <p class="section-subtitle">Three layers work together to minimise perceived response time.</p>
+
+  <table class="styled-table" style="max-width:800px;">
+    <thead><tr><th>Layer</th><th>Where</th><th>Latency Saved</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Background typing sound</strong></td>
+        <td><code>BackgroundAudioPlayer</code></td>
+        <td><span class="latency-val">~0 ms</span> — fills silence immediately</td>
+      </tr>
+      <tr>
+        <td><strong>Filler phrases</strong></td>
+        <td>Prompt: "always start with 'I see...'"</td>
+        <td><span class="latency-val">~100 ms</span> first tokens, <span class="latency-val">~300 ms</span> TTS</td>
+      </tr>
+      <tr>
+        <td><strong>Short responses</strong></td>
+        <td>Prompt: "1-3 sentences max"</td>
+        <td>Less LLM generation time</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════ DEBUG EVENTS ═══════════════ -->
+<section class="reveal">
+  <div class="section-label"><span class="dot"></span>Observability</div>
+  <h2 class="section-title">Debug Logging Events</h2>
+  <p class="section-subtitle">Pipeline events (LiveKit v1.4.1 event names) for observability and debugging.</p>
+
+  <div class="grid-3">
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--accent-light); margin-bottom:4px;">agent_state_changed</div>
+      <div style="font-size:12px; color:var(--text-muted);">listening → thinking → speaking</div>
+    </div>
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--blue); margin-bottom:4px;">user_state_changed</div>
+      <div style="font-size:12px; color:var(--text-muted);">listening → speaking → away</div>
+    </div>
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--green); margin-bottom:4px;">user_input_transcribed</div>
+      <div style="font-size:12px; color:var(--text-muted);">Raw STT output</div>
+    </div>
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--pink); margin-bottom:4px;">speech_created</div>
+      <div style="font-size:12px; color:var(--text-muted);">Agent starting to speak (source: say / generate_reply)</div>
+    </div>
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--orange); margin-bottom:4px;">conversation_item_added</div>
+      <div style="font-size:12px; color:var(--text-muted);">Committed messages (role + text)</div>
+    </div>
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--red); margin-bottom:4px;">error</div>
+      <div style="font-size:12px; color:var(--text-muted);">LLM / STT / TTS errors</div>
+    </div>
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--yellow); margin-bottom:4px;">agent_false_interruption</div>
+      <div style="font-size:12px; color:var(--text-muted);">Noise that was correctly filtered</div>
+    </div>
+    <div class="card" style="padding:18px 22px;">
+      <div style="font-size:12px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">close</div>
+      <div style="font-size:12px; color:var(--text-muted);">Session teardown reason</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PATIENT DATA ═══════════════ -->
+<section class="reveal">
+  <div class="section-label"><span class="dot"></span>Patient Data</div>
+  <h2 class="section-title">Data Lifecycle</h2>
+  <p class="section-subtitle"><code>tools/patient_data.py</code> handles loading context before and saving transcripts after each call.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="font-size:15px; font-weight:700; margin-bottom:8px;">📥 Pre-call: <code>load_patient_context()</code></h3>
+      <p style="font-size:13px; color:var(--text-muted);">
+        Reads patient JSON and formats it for the system prompt. Includes: name, medications, conditions, allergies, provider, and last 3 call summaries.
+      </p>
+    </div>
+    <div class="card">
+      <h3 style="font-size:15px; font-weight:700; margin-bottom:8px;">📤 Post-call: <code>save_call_notes()</code></h3>
+      <p style="font-size:13px; color:var(--text-muted);">
+        Extracts conversation transcript from <code>session.history</code> and appends it to the patient's <code>call_history</code> array.
+      </p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px; max-width:580px;">
+    <h3 style="font-size:13px; font-weight:600; color:var(--accent-light); margin-bottom:8px;">Sample Patient Record</h3>
+    <pre style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-muted); line-height:1.7; margin:0;">{
+  "patient_id": "P001",
+  "name": "Sarah Johnson",
+  "medications": [
+    {"name": "Toripalimab", "dose": "500mg", "frequency": "twice daily"}
+  ],
+  "conditions": ["Cancer"],
+  "call_history": [
+    {"date": "2026-02-12T...", "transcript": ["assistant: ...", "user: ..."]}
+  ]
+}</pre>
+  </div>
+</section>
+
+<!-- ═══════════════ FILE MAP ═══════════════ -->
+<section id="filemap" class="reveal">
+  <div class="section-label"><span class="dot"></span>Project Structure</div>
+  <h2 class="section-title">File Map</h2>
+  <p class="section-subtitle">Complete project file structure with descriptions.</p>
+
+  <div class="file-tree">
+<span class="dir">VOICE/</span>
+├── <span class="file">agent.py</span>                  <span class="comment"># Main entrypoint — pipeline wiring + call handling</span>
+├── <span class="file">make_call.py</span>              <span class="comment"># CLI: dispatch agent + dial phone number</span>
+├── <span class="file">config.py</span>                 <span class="comment"># Env-based configuration (all providers)</span>
+├── <span class="file">setup_sip_trunk.py</span>        <span class="comment"># Interactive: create LiveKit outbound SIP trunk</span>
+├── <span class="file">test_twilio_sip.py</span>        <span class="comment"># Test suite: env, LiveKit, SIP, real call</span>
+├── <span class="file">test_elevenlabs.py</span>        <span class="comment"># ElevenLabs TTS test</span>
+├── <span class="file">requirements.txt</span>          <span class="comment"># Python dependencies</span>
+│
+├── <span class="dir">prompts/</span>
+│   ├── <span class="file">__init__.py</span>
+│   └── <span class="file">patient_support.py</span>    <span class="comment"># System prompt + greeting function</span>
+│
+├── <span class="dir">stt/</span>
+│   ├── <span class="file">__init__.py</span>
+│   └── <span class="file">factory.py</span>            <span class="comment"># STT provider factory (6 providers)</span>
+│
+├── <span class="dir">tts/</span>
+│   ├── <span class="file">__init__.py</span>
+│   └── <span class="file">factory.py</span>            <span class="comment"># TTS provider factory (6 providers) + ElevenLabs voice</span>
+│
+├── <span class="dir">agents/</span>
+│   ├── <span class="file">__init__.py</span>
+│   ├── <span class="file">base.py</span>               <span class="comment"># AssessmentResult, Severity, base class</span>
+│   ├── <span class="file">orchestrator.py</span>       <span class="comment"># LLM-callable tool functions (FunctionContext)</span>
+│   ├── <span class="file">mental_health.py</span>      <span class="comment"># PHQ-2 depression screening</span>
+│   ├── <span class="file">sleep.py</span>              <span class="comment"># Sleep assessment</span>
+│   ├── <span class="file">appetite.py</span>           <span class="comment"># Appetite + weight loss</span>
+│   └── <span class="file">side_effects.py</span>       <span class="comment"># 17 side effects × severity matrix</span>
+│
+├── <span class="dir">tools/</span>
+│   ├── <span class="file">__init__.py</span>
+│   └── <span class="file">patient_data.py</span>       <span class="comment"># Load patient context / save transcripts</span>
+│
+├── <span class="dir">conversation/</span>
+│   ├── <span class="file">__init__.py</span>
+│   └── <span class="file">flow.py</span>               <span class="comment"># ConversationState machine (not active)</span>
+│
+├── <span class="dir">llm/</span>
+│   ├── <span class="file">__init__.py</span>
+│   ├── <span class="file">base.py</span>               <span class="comment"># LLM abstraction base</span>
+│   ├── <span class="file">azure_openai.py</span>       <span class="comment"># Azure OpenAI wrapper</span>
+│   ├── <span class="file">gemini.py</span>             <span class="comment"># Gemini wrapper</span>
+│   └── <span class="file">factory.py</span>            <span class="comment"># LLM factory (not active)</span>
+│
+├── <span class="dir">data/patients/</span>
+│   └── <span class="file">sample_patient.json</span>   <span class="comment"># Patient records + call history</span>
+│
+└── <span class="dir">docs/</span>
+    ├── <span class="file">ARCHITECTURE.md</span>        <span class="comment"># Architecture documentation</span>
+    ├── <span class="file">USAGE.md</span>               <span class="comment"># Technical usage guide</span>
+    ├── <span class="file">SELF_HOSTED_ROADMAP.md</span> <span class="comment"># Self-hosted LiveKit roadmap</span>
+    └── <span class="file">AGENT_CONTEXT.md</span>       <span class="comment"># Full context for AI agents</span>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <p>Lila Patient Support Voice Agent &nbsp;·&nbsp; Architecture Flow &nbsp;·&nbsp; Generated Feb 2026</p>
+</footer>
+</div>
+
+<!-- ═══════════════ SCROLL REVEAL JS ═══════════════ -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav active state
+  const pills = document.querySelectorAll('nav .pills a');
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    pills.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
